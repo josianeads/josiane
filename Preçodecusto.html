@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ 
+<body>
+    <form id="valorProduto">
+        
+        <p>
+            <label>Descrição do Produto</label>
+            <input type="text" id="descricao" required>
+        </p>
+        <p>
+            <label>Valor inicial do produto</label>
+            <input type="number" id="valorInicial" required>
+        </p>
+        <p>
+            <label>Percentual</label>
+            <input type="number" id="percentual" required>
+        </p>
+        <p>
+            <button type="submit">Calcular valor final</button>
+        </p>
+    </form>
+    <div id="valorFinal"></div>
+    <script>
+        document.getElementById('valorProduto').addEventListener('submit', function (value) {
+            event.preventDefault();
+            let descricao = document.getElementById('descricao').value;
+            let valorInicial = parseFloat(document.getElementById('valorInicial').value);
+            let percentual = parseFloat(document.getElementById('percentual').value);
+            if (isNaN(valorInicial)) {
+                document.getElementById('valorFinal').textContent = "Por favor, insira um valor válido.";
+                return;
+            }
+            let valorDeVenda = (valorInicial * (percentual / 100)+ valorInicial);
+            document.getElementById('valorFinal').textContent = "O valor de venda do produto é: " + valorDeVenda.toFixed(2);
+        });
+ 
+    </script>
+ 
+ 
+</body>
